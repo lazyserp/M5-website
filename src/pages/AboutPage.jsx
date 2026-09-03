@@ -1,95 +1,139 @@
 import React from 'react';
-import Eyebrow from '../components/Eyebrow';
-import { ArrowRight, ShieldCheck, Zap, Lock } from 'lucide-react';
-import BenchmarkCharts from '../components/BenchmarkCharts';
+import { ArrowRight, ArrowUpRight, Shield, Zap, Lock, Terminal, Cpu, Layers } from 'lucide-react';
 
 export default function AboutPage({ setActivePage, openDemoModal }) {
   return (
-    <div className="container" style={{ paddingTop: 'calc(var(--header-height) + 70px)', paddingBottom: '100px', maxWidth: '960px' }}>
-      {/* ── Editorial Header ─────────────────────────────────────── */}
-      <header style={{ marginBottom: '64px', maxWidth: '840px' }}>
-        <Eyebrow>Product Philosophy</Eyebrow>
-        <h1
-          style={{
-            fontSize: 'clamp(2.2rem, 3.8vw, 3.2rem)',
-            fontWeight: 300,
-            letterSpacing: '-1.8px',
-            color: '#FFFFFF',
-            lineHeight: 1.15,
-            marginTop: '16px',
-            marginBottom: '28px'
-          }}
-        >
-          Context is the real bottleneck in AI.
-        </h1>
-        <p
-          style={{
-            fontSize: '1.2rem',
-            lineHeight: 1.65,
-            color: 'var(--color-text-muted)',
-            fontWeight: 350,
-            maxWidth: '720px'
-          }}
-        >
-          M5 is an invisible, permission-aware code context layer that plugs into tools developers already use. <span style={{ color: '#FFFFFF', fontWeight: 400 }}>M5 supplies the context; your AI produces the truth.</span>
-        </p>
-      </header>
-
-      {/* ── Minimalist 3 Pillars (Editorial Flow) ─────────────────────────── */}
-      <div style={{ display: 'flex', flexDirection: 'column', gap: '48px', borderTop: '1px solid var(--color-border)', paddingTop: '56px', maxWidth: '840px' }}>
-        <div style={{ display: 'grid', gridTemplateColumns: '80px 1fr', gap: '24px', alignItems: 'baseline' }}>
-          <span style={{ fontSize: '0.85rem', color: '#52525b', fontFamily: 'var(--font-mono)' }}>01</span>
-          <div>
-            <h3 style={{ fontSize: '1.3rem', fontWeight: 400, color: '#FFFFFF', letterSpacing: '-0.5px', marginBottom: '12px' }}>
-              The Ingestion Dilemma
-            </h3>
-            <p style={{ fontSize: '0.98rem', lineHeight: 1.7, color: 'var(--color-text-muted)', margin: 0 }}>
-              Feeding entire repositories into LLM prompts wastes 85% of token budgets and buries the actual answer in noise. When models lack dependency context, they hallucinate imports, miss downstream callers, and produce broken code.
-            </p>
-          </div>
+    <div className="m5-about-page-root">
+      
+      {/* ── 1. Top Hero Section (Black Background & Centered "About us") ─── */}
+      <section className="m5-about-black-hero">
+        <div className="m5-hero-inner">
+          <h1 className="m5-about-black-hero-title">
+            About us
+          </h1>
+          
         </div>
+      </section>
 
-        <div style={{ display: 'grid', gridTemplateColumns: '80px 1fr', gap: '24px', alignItems: 'baseline', borderTop: '1px solid rgba(255, 255, 255, 0.05)', paddingTop: '48px' }}>
-          <span style={{ fontSize: '0.85rem', color: '#52525b', fontFamily: 'var(--font-mono)' }}>02</span>
-          <div>
-            <h3 style={{ fontSize: '1.3rem', fontWeight: 400, color: '#FFFFFF', letterSpacing: '-0.5px', marginBottom: '12px' }}>
-              Sub-20ms AST Precision &amp; Scalability
-            </h3>
-            <p style={{ fontSize: '0.98rem', lineHeight: 1.7, color: 'var(--color-text-muted)', margin: 0 }}>
-              M5 builds an incremental graph of AST symbols, call hierarchies, and companion tests. When your AI asks a question, M5 returns exact line citations and commit provenance in under 20 milliseconds, holding a rock-solid 13.4 RPS plateau under heavy multi-developer concurrency.
+      {/* ── 2. White Content Section (Black text, Kalice & PolySans) ─────── */}
+      <div className="m5-about-page-content">
+        <div className="m5-container">
+
+          {/* ── Editorial Intro ────────────────────────────────────────── */}
+          <section className="m5-about-hero-block">
+            <h2 className="m5-about-title">
+              Tokens Cost is the real bottleneck in AI.
+            </h2>
+
+            <p className="m5-about-lead">
+              We believe the next leap in AI coding isn't model intelligence it's context correctness. 
+              M5 decouples retrieval from reasoning, grounding autonomous agents in verified AST truth.
+            </p>
+
+          </section>
+
+
+
+          {/* ── High-Contrast Editorial Case Study: The Runaway Token Crisis ── */}
+          <div className="m5-about-quote-box">
+            <span className="m5-about-quote-tag">THE RUNAWAY TOKEN CRISIS • INDUSTRY REPORT</span>
+            <blockquote className="m5-about-quote-text">
+              “Uber Spent Its Entire 2026 AI Budget in 4 Months.”
+            </blockquote>
+            <p style={{
+              fontFamily: 'PolySans, sans-serif',
+              fontSize: '17px',
+              lineHeight: '1.6',
+              color: 'rgba(255, 255, 255, 0.78)',
+              maxWidth: '740px',
+              margin: '0 auto 24px'
+            }}>
+              Why? Autonomous developer agents dump entire 10,000-line monorepo files into prompt windows. When your LLM is forced to read thousands of lines of irrelevant boilerplate to fix a 2-line function, token budgets collapse.
             </p>
           </div>
-        </div>
 
-        <div style={{ display: 'grid', gridTemplateColumns: '80px 1fr', gap: '24px', alignItems: 'baseline', borderTop: '1px solid rgba(255, 255, 255, 0.05)', paddingTop: '48px' }}>
-          <span style={{ fontSize: '0.85rem', color: '#52525b', fontFamily: 'var(--font-mono)' }}>03</span>
-          <div>
-            <h3 style={{ fontSize: '1.3rem', fontWeight: 400, color: '#FFFFFF', letterSpacing: '-0.5px', marginBottom: '12px' }}>
-              Air-Gapped &amp; Safe by Default
-            </h3>
-            <p style={{ fontSize: '0.98rem', lineHeight: 1.7, color: 'var(--color-text-muted)', margin: 0 }}>
-              M5 is context-only and read-only. It runs completely inside your private VPC perimeter. Zero code leaves your infrastructure, and M5 cannot write files or execute shell commands.
+          {/* ── Core Engineering Principles: AI Token Cost Optimization (4-Card Grid) ── */}
+          <div className="m5-about-section-header">
+            <span className="m5-about-section-tag">TOKEN ECONOMICS &amp; EFFICIENCY</span>
+            <h2 className="m5-about-section-title">How M5 slashes your AI token costs.</h2>
+            <p className="m5-about-section-sub">
+              Four architectural mechanisms designed to prevent AI budget blowouts without compromising model reasoning.
             </p>
           </div>
+
+          <div className="m5-values-grid" style={{ marginBottom: '80px' }}>
+            <div className="m5-value-card">
+              <span className="m5-value-num">01 / TOKEN COMPRESSION</span>
+              <div>
+                <h4 className="m5-value-heading">Sub-AST Chunk Precision</h4>
+                <p className="m5-value-desc">
+                  Instead of dumping 10,000-line files, M5 extracts only the exact function or class required slashing input token payload size by over 75%.
+                </p>
+              </div>
+            </div>
+
+            <div className="m5-value-card">
+              <span className="m5-value-num">02 / DEDUPLICATION</span>
+              <div>
+                <h4 className="m5-value-heading">Boilerplate Elimination</h4>
+                <p className="m5-value-desc">
+                  Redundant headers, repeated package imports, and dead boilerplate are stripped away before reaching the model context window.
+                </p>
+              </div>
+            </div>
+
+            <div className="m5-value-card">
+              <span className="m5-value-num">03 / RETRY REDUCTION</span>
+              <div>
+                <h4 className="m5-value-heading">First-Shot Correctness</h4>
+                <p className="m5-value-desc">
+                  The most expensive tokens are repeated hallucination retries. Supplying verified caller graphs upfront gets prompts solved on attempt #1.
+                </p>
+              </div>
+            </div>
+
+            <div className="m5-value-card">
+              <span className="m5-value-num">04 / PREDICTABLE SCALE</span>
+              <div>
+                <h4 className="m5-value-heading">Linear Budget Control</h4>
+                <p className="m5-value-desc">
+                  Sub-15ms local and VPC retrieval keeps costs flat and predictable 
+                  protecting engineering teams from sudden multi-million dollar API overages.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          {/* ── Call to Action Banner ─────────────────────────────────── */}
+          <div className="m5-about-cta-card">
+            <h2 className="m5-about-cta-title">
+              Stop paying your LLMs to read irrelevant code.
+            </h2>
+            <p className="m5-about-cta-desc">
+              Connect M5 to Cursor, Claude Code, or your custom agent in under two minutes.
+            </p>
+            <div className="m5-about-cta-actions">
+              <button
+                className="m5-hero-btn-primary"
+                style={{ padding: '12px 28px', fontSize: '15px' }}
+                onClick={openDemoModal}
+              >
+                <span>Request Access</span>
+                <ArrowRight size={16} />
+              </button>
+              <button
+                className="m5-hero-btn-secondary"
+                style={{ padding: '12px 28px', fontSize: '15px' }}
+                onClick={() => setActivePage('docs')}
+              >
+                <span>Explore Technology</span>
+              </button>
+            </div>
+          </div>
+
         </div>
       </div>
 
-      {/* ── Empirical Load Testing Benchmarks ─────────────────────────────── */}
-      <div style={{ marginTop: '72px', borderTop: '1px solid var(--color-border)', paddingTop: '56px' }}>
-        <BenchmarkCharts />
-      </div>
-
-      {/* ── Actions ──────────────────────────────────────────────────────── */}
-      <div style={{ borderTop: '1px solid var(--color-border)', marginTop: '48px', paddingTop: '48px', display: 'flex', alignItems: 'center', gap: '16px' }}>
-        <button className="btn btn-primary" onClick={openDemoModal}>
-          <span>Request Demo</span>
-          <ArrowRight size={14} />
-        </button>
-        <button className="btn btn-secondary" onClick={() => setActivePage('docs')}>
-          <span>Read Documentation</span>
-        </button>
-      </div>
     </div>
   );
 }
-

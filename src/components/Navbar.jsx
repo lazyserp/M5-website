@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Menu, X, ArrowRight, BookOpen, Info, Home } from 'lucide-react';
+import { Menu, X } from 'lucide-react';
 
 export default function Navbar({ activePage, setActivePage, openDemoModal }) {
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -9,101 +9,79 @@ export default function Navbar({ activePage, setActivePage, openDemoModal }) {
     setMobileOpen(false);
   };
 
-  const handleDemoClick = () => {
+  const handleCtaClick = () => {
     setMobileOpen(false);
     openDemoModal();
   };
 
   return (
-    <header className="site-header">
-      <div className="container">
-        {/* Brand Logo */}
+    <header className="m5-header">
+      <div className="m5-header-container">
+        {/* Left: M5 Logo using user's logo.png from public folder */}
         <div
-          className="brand-logo"
+          className="m5-brand-logo"
           onClick={() => handleNavClick('home')}
           role="button"
           tabIndex={0}
         >
-          <img src="/logo.png" alt="M5 Logo" className="brand-logo-img" />
-          <span>M5</span>
+          <img src="/logo.png" alt="M5 Logo" className="m5-brand-logo-img" />
         </div>
 
-        {/* Desktop Navigation Links */}
-        <ul className="nav-links">
-          <li>
+        {/* Center: Exactly Centered Small Shinkei-Style Navigation Pill */}
+        <div className="m5-nav-center-slot">
+          <div className="m5-nav-pill-group">
             <button
-              className={`nav-btn ${activePage === 'home' ? 'active' : ''}`}
+              className={`m5-nav-item ${activePage === 'home' ? 'active' : ''}`}
               onClick={() => handleNavClick('home')}
             >
               Overview
             </button>
-          </li>
-          <li>
             <button
-              className={`nav-btn ${activePage === 'docs' ? 'active' : ''}`}
-              onClick={() => handleNavClick('docs')}
-            >
-              Documentation
-            </button>
-          </li>
-          <li>
-            <button
-              className={`nav-btn ${activePage === 'about' ? 'active' : ''}`}
+              className={`m5-nav-item ${activePage === 'about' ? 'active' : ''}`}
               onClick={() => handleNavClick('about')}
             >
               About
             </button>
-          </li>
-        </ul>
+          </div>
+        </div>
 
-        {/* Desktop Actions */}
-        <div className="nav-actions">
-          <button className="btn btn-secondary nav-docs-btn" onClick={() => handleNavClick('docs')}>
-            Docs
-          </button>
-          <button className="btn btn-primary" onClick={handleDemoClick}>
-            <span>Request Demo</span>
+        {/* Right: Join the Team / Request Access Button */}
+        <div className="m5-nav-right-slot">
+          <button className="m5-cta-pill" onClick={handleCtaClick}>
+            <span>Request Access</span>
           </button>
 
-          {/* Mobile Menu Toggle Button */}
+          {/* Mobile menu toggle */}
           <button
-            className="mobile-menu-btn"
             onClick={() => setMobileOpen(!mobileOpen)}
-            aria-label="Toggle navigation menu"
+            className="mobile-only-hamburger"
+            aria-label="Toggle Menu"
           >
-            {mobileOpen ? <X size={20} /> : <Menu size={20} />}
+            {mobileOpen ? <X size={18} /> : <Menu size={18} />}
           </button>
         </div>
       </div>
 
-      {/* Mobile Dropdown Menu Drawer */}
+      {/* Mobile Drawer */}
       {mobileOpen && (
-        <div className="mobile-nav-drawer">
+        <div className="m5-mobile-drawer">
           <button
-            className={`mobile-nav-item ${activePage === 'home' ? 'active' : ''}`}
+            className="m5-nav-item"
+            style={{ textAlign: 'left', fontSize: '16px', padding: '10px 14px' }}
             onClick={() => handleNavClick('home')}
           >
-            <Home size={17} />
-            <span>Overview</span>
+            Overview
           </button>
           <button
-            className={`mobile-nav-item ${activePage === 'docs' ? 'active' : ''}`}
-            onClick={() => handleNavClick('docs')}
-          >
-            <BookOpen size={17} />
-            <span>Documentation</span>
-          </button>
-          <button
-            className={`mobile-nav-item ${activePage === 'about' ? 'active' : ''}`}
+            className="m5-nav-item"
+            style={{ textAlign: 'left', fontSize: '16px', padding: '10px 14px' }}
             onClick={() => handleNavClick('about')}
           >
-            <Info size={17} />
-            <span>About</span>
+            About
           </button>
-          <div className="mobile-nav-divider" />
-          <button className="btn btn-primary mobile-demo-btn" onClick={handleDemoClick}>
-            <span>Request Demo</span>
-            <ArrowRight size={14} />
+          <div style={{ height: '1px', background: 'rgba(255,255,255,0.1)', margin: '8px 0' }} />
+          <button className="m5-cta-pill" style={{ width: '100%', height: '40px' }} onClick={handleCtaClick}>
+            <span>Request Access</span>
           </button>
         </div>
       )}

@@ -18,19 +18,16 @@ export default function App() {
   const closeDemoModal = () => setIsDemoModalOpen(false);
 
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', minHeight: '100vh', position: 'relative' }}>
-      <div className="ambient-background-layer" aria-hidden="true">
-        <div className="ambient-glow-hero" />
-        <div className="ambient-glow-mid" />
-      </div>
-      <div className="grid-lines-overlay" aria-hidden="true" />
+    <div style={{ display: 'flex', flexDirection: 'column', minHeight: '100vh', position: 'relative', background: '#FFFFFF' }}>
       <Navbar activePage={activePage} setActivePage={setActivePage} openDemoModal={openDemoModal} />
       <div style={{ flex: 1, position: 'relative', zIndex: 2 }}>
-        {activePage === 'home' && <HomePage setActivePage={setActivePage} openDemoModal={openDemoModal} />}
-        {activePage === 'docs' && <DocsPage setActivePage={setActivePage} openDemoModal={openDemoModal} />}
-        {activePage === 'about' && <AboutPage setActivePage={setActivePage} openDemoModal={openDemoModal} />}
+        {activePage === 'about' ? (
+          <AboutPage setActivePage={setActivePage} openDemoModal={openDemoModal} />
+        ) : (
+          <HomePage setActivePage={setActivePage} openDemoModal={openDemoModal} />
+        )}
       </div>
-      <Footer setActivePage={setActivePage} openDemoModal={openDemoModal} />
+      <Footer activePage={activePage} setActivePage={setActivePage} openDemoModal={openDemoModal} />
       <RequestDemoModal isOpen={isDemoModalOpen} onClose={closeDemoModal} />
     </div>
   );

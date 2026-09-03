@@ -1,272 +1,338 @@
 import React, { useState } from 'react';
-import { ArrowRight, CheckCircle2, XCircle, Layers, GitBranch, ShieldCheck, Zap, GitPullRequest } from 'lucide-react';
-import Eyebrow from '../components/Eyebrow';
+import { ArrowRight, CheckCircle2, XCircle, Terminal, Shield, Cpu, Layers, GitBranch, GitPullRequest, Check, Server, Laptop, Cloud, Code2 } from 'lucide-react';
 import CodeBlock from '../components/CodeBlock';
-import HeroTitle from '../components/HeroTitle';
 
 export default function HomePage({ setActivePage, openDemoModal }) {
   const [activeTab, setActiveTab] = useState('cursor');
 
-  const configs = {
-    cursor: {
-      title: 'Cursor IDE (Remote HTTP MCP)',
-      code: `// Add to ~/.cursor/mcp.json or Settings > MCP
-{
-  "mcpServers": {
-    "m5-context": {
-      "serverUrl": "http://m5.ai/mcp",
-      "headers": {
-        "Authorization": "Your M5 API token"
-      }
-    }
-  }
-}`
-    },
-    vscode: {
-      title: 'VS Code / GitHub Copilot (Remote HTTP MCP)',
-      code: `// Add to .vscode/mcp.json
-{
-  "servers": {
-    "m5-context": {
-      "type": "http",
-      "url": "http://m5.ai/mcp",
-      "headers": {
-        "Authorization": "Your M5 API token"
-      }
-    }
-  }
-}`
-    },
-    claude: {
-      title: 'Claude Code (Remote HTTP MCP)',
-      code: `// Add to mcp.json
-{
-  "mcpServers": {
-    "m5-context": {
-      "url": "http://m5.ai/mcp",
-      "headers": {
-        "Authorization": "Your M5 API token"
-      }
-    }
-  }
-}`
-    },
-    chatgpt: {
-      title: 'ChatGPT & Custom Agents (Remote HTTP MCP)',
-      code: `Endpoint: http://m5.ai/mcp
-Protocol: JSON-RPC 2.0 (MCP 2024-11-05)
-Auth: Authorization: Bearer <Your M5 API token>
-
-Available Tools:
-- m5_get_context (Hybrid AST + Dependency Graph Retrieval)
-- m5_search_code (Dense Semantic + Exact BM25 Search)
-- m5_read_lines (Cited AST Range Reader)
-- m5_get_dependencies (Call Graph / Import Hierarchy)
-- m5_find_symbol_references (Cross-File Symbol References)`
-    },
-    rest: {
-      title: 'Direct HTTP REST API (Context Engine)',
-      code: `curl -X POST http://m5.ai/api/context \\
-  -H "Authorization: Bearer <Your M5 API token>" \\
-  -H "Content-Type: application/json" \\
-  -d '{
-    "query": "how is authentication token verified in middleware?",
-    "top_k": 3,
-    "expand_dependencies": true
-  }'`
-    }
-  };
 
   return (
-    <div>
-      {/* ── Hero Section ─────────────────────────────────────────────────── */}
-      <section className="hero">
-        <div className="container hero-content">
-          <HeroTitle />
+    <div className="m5-page-root">
+      {/* ── 1. Hero Section (Deep Burgundy / Crimson Grain Radial) ─────────── */}
+      <section className="m5-about-hero">
 
-          <p className="hero-subtitle" style={{ maxWidth: '640px', marginTop: '16px' }}>
-            The invisible code context layer for Copilot, Cursor, and Claude Code.
-            <span className="highlight-white" style={{ display: 'block', marginTop: '6px' }}>
+        <div className="m5-hero-inner">
+          <h1 className="m5-hero-title">
+            Save your AI token cost
+          </h1>
+
+          <div className="m5-hero-subtitle">
+            <p>
+              
               M5 supplies the context. Your AI produces the truth.
-            </span>
-          </p>
+            </p>
 
-          <div className="hero-actions">
-            <button className="btn btn-primary" onClick={openDemoModal}>
-              <span>Request Demo</span>
-              <ArrowRight size={14} />
-            </button>
-            <button className="btn btn-secondary" onClick={() => setActivePage('docs')}>
-              <span>Read Documentation</span>
-            </button>
+          </div>
+
+
+        </div>
+      </section>
+
+      {/* ── 3. 3-Column Feature Cards (M5 1:1) ─────────────────────────── */}
+      <section className="m5-features-section">
+        <div className="m5-container">
+          <h2 className="m5-features-title">
+           Stop paying your LLMs to read <span style={{ fontStyle: 'italic', fontWeight: 300 }}>irrelevant code.</span>
+          </h2>
+
+          <div className="m5-three-cards-grid">
+            {/* Card 1: Token Savings */}
+            <div className="m5-three-card">
+              <div className="m5-three-card-header">
+                <span className="m5-three-card-title">75%+ Token Savings</span>
+                <span style={{ fontFamily: 'PolySans Mono, monospace', fontSize: '13px', color: '#B92B23', fontWeight: 600 }}>01</span>
+              </div>
+              <p className="m5-three-card-desc">
+                Instead of dumping entire files into prompts, M5 gives your LLM only the exact code it needs , cutting token usage and cloud API costs by over 75%.
+              </p>
+            </div>
+
+            {/* Card 2: Fast Indexing */}
+            <div className="m5-three-card">
+              <div className="m5-three-card-header">
+                <span className="m5-three-card-title">&lt;100ms File Indexing</span>
+                <span style={{ fontFamily: 'PolySans Mono, monospace', fontSize: '13px', color: '#B92B23', fontWeight: 600 }}>02</span>
+              </div>
+              <p className="m5-three-card-desc">
+                Incremental tree-sitter AST parsing updates your codebase graph instantly on every file save and Git commit, eliminating long background re-indexing delays.
+              </p>
+            </div>
+
+            {/* Card 3: Fast Retrieval */}
+            <div className="m5-three-card">
+              <div className="m5-three-card-header">
+                <span className="m5-three-card-title">Sub-15ms Fast Retrieval</span>
+                <span style={{ fontFamily: 'PolySans Mono, monospace', fontSize: '13px', color: '#B92B23', fontWeight: 600 }}>03</span>
+              </div>
+              <p className="m5-three-card-desc">
+                Hybrid Reciprocal Rank Fusion (RRF) fuses lexical BM25 code symbols with dense semantic vectors to deliver pinpoint repository context in under 15 milliseconds.
+              </p>
+            </div>
+
+            {/* Card 4: Accurate Context */}
+            <div className="m5-three-card">
+              <div className="m5-three-card-header">
+                <span className="m5-three-card-title">Accurate Code Context</span>
+                <span style={{ fontFamily: 'PolySans Mono, monospace', fontSize: '13px', color: '#B92B23', fontWeight: 600 }}>04</span>
+              </div>
+              <p className="m5-three-card-desc">
+                Deterministic AST syntax resolution traverses multi-hop caller chains and companion test suites, providing AI agents verified ground truth with zero hallucinations.
+              </p>
+            </div>
+
+            {/* Card 5: Security / Code Control */}
+            <div className="m5-three-card">
+              <div className="m5-three-card-header">
+                <span className="m5-three-card-title">100% Code in Your Control</span>
+                <span style={{ fontFamily: 'PolySans Mono, monospace', fontSize: '13px', color: '#B92B23', fontWeight: 600 }}>05</span>
+              </div>
+              <p className="m5-three-card-desc">
+                Context-only and air-gap compliant. Zero file writes, zero shell execution, and your source code never leaves your private perimeter or trains third-party models.
+              </p>
+            </div>
+
+            {/* Card 6: Universal Setup */}
+            <div className="m5-three-card">
+              <div className="m5-three-card-header">
+                <span className="m5-three-card-title">Universal 1-Click Setup</span>
+                <span style={{ fontFamily: 'PolySans Mono, monospace', fontSize: '13px', color: '#B92B23', fontWeight: 600 }}>06</span>
+              </div>
+              <p className="m5-three-card-desc">
+                Native Model Context Protocol  integrates out of the box with Cursor IDE, Claude Code ,Codex, VS Code, Antigravity and other Agentic IDEs with zero setup friction.
+              </p>
+            </div>
           </div>
         </div>
       </section>
 
-      {/* ── Metrics Bar ──────────────────────────────────────────────────── */}
-      <section className="metrics-section">
-        <div className="container">
-          <div className="metrics-grid">
-            <div className="metric-item">
-              <div className="metric-val">&lt; 100ms</div>
-              <div className="metric-label">Median MCP Latency</div>
-            </div>
-            <div className="metric-item">
-              <div className="metric-val">75%</div>
-              <div className="metric-label">Token Spend Reduction</div>
-            </div>
-            <div className="metric-item">
-              <div className="metric-val">100%</div>
-              <div className="metric-label">Code Accuracy</div>
-            </div>
-          </div>
-        </div>
-      </section>
 
-      {/* ── The Problem & The Solution ───────────────────────────────────── */}
-      <section className="section">
-        <div className="container">
-          <div className="section-header">
-            <Eyebrow>Context on Demand • Tokens on Budget</Eyebrow>
-            <h2 className="section-title">
-              Stop paying LLMs to read <span className="highlight-white">irrelevant code</span>.
+      {/* ── 3. 16+ Languages Supported (Polyglot Monorepo Support) ──────── */}
+      <section className="m5-languages-section">
+        <div className="m5-container">
+          <div className="m5-languages-center-header">
+            <div className="m5-languages-badge-pill">
+              <Code2 size={14} />
+              <span>16+ LANGUAGES SUPPORTED</span>
+            </div>
+            <h2 className="m5-values-title-white" style={{ marginBottom: '16px' }}>
+              Deep AST intelligence across your entire stack.
             </h2>
-            <p className="section-desc">
-              Autonomous agents that blindly ingest whole files explode API costs and hallucinate on large monorepos. M5 decouples retrieval from reasoning to deliver AST precision.
+            <p className="m5-values-sub" style={{ color: 'rgba(255, 255, 255, 0.65)', marginBottom: '0' }}>
+              Native Tree-sitter AST parsing, syntax-aware chunking, and multi-file dependency resolution for all major languages.
             </p>
           </div>
 
-          <div className="comparison-grid">
-            <div className="comparison-card">
-              <div className="comparison-header">
-                <span className="comparison-title">Brittle Whole-File Ingestion</span>
-                <span className="comparison-badge badge-warning">Traditional</span>
+          <div className="m5-languages-grid">
+            {[
+              { name: 'Python', ext: '.py' },
+              { name: 'TypeScript', ext: '.ts, .tsx'},
+              { name: 'JavaScript', ext: '.js, .jsx'},
+              { name: 'Go', ext: '.go' },
+              { name: 'Rust', ext: '.rs' },
+              { name: 'Java', ext: '.java' },
+              { name: 'C++', ext: '.cpp, .hpp' },
+              { name: 'C', ext: '.c, .h' },
+              { name: 'C#', ext: '.cs' },
+              { name: 'Kotlin', ext: '.kt, .kts' },
+              { name: 'Swift', ext: '.swift' },
+              { name: 'Ruby', ext: '.rb'},
+              { name: 'PHP', ext: '.php'},
+              { name: 'Scala', ext: '.scala' },
+              { name: 'Dart', ext: '.dart' },
+              { name: 'SQL', ext: '.sql' },
+            ].map((lang) => (
+              <div key={lang.name} className="m5-lang-card">
+                <span className="m5-lang-name">{lang.name}</span>
+                <span className="m5-lang-ext">{lang.ext}</span>
+                <span className="m5-lang-ast-tag">{lang.tag}</span>
               </div>
-              <ul className="comparison-list">
-                <li className="comparison-item">
-                  <XCircle size={18} color="#F87171" style={{ flexShrink: 0, marginTop: 3 }} />
-                  <span><strong>Context Window Bloat:</strong> Pastes thousands of irrelevant lines, exploding LLM token costs.</span>
-                </li>
-                <li className="comparison-item">
-                  <XCircle size={18} color="#F87171" style={{ flexShrink: 0, marginTop: 3 }} />
-                  <span><strong>Zero Dependency Awareness:</strong> Fails to discover cross-file imports, callers, and companion test files.</span>
-                </li>
-                <li className="comparison-item">
-                  <XCircle size={18} color="#F87171" style={{ flexShrink: 0, marginTop: 3 }} />
-                  <span><strong>Security Exposure:</strong> Autonomous write/shell execution risks destroying production repositories.</span>
-                </li>
-              </ul>
-            </div>
-
-            <div className="comparison-card card-highlight">
-              <div className="comparison-header">
-                <span className="comparison-title">M5 Intelligent Context Layer</span>
-                <span className="comparison-badge badge-success">M5 v2 Engine</span>
-              </div>
-              <ul className="comparison-list">
-                <li className="comparison-item">
-                  <CheckCircle2 size={18} color="#FFFFFF" style={{ flexShrink: 0, marginTop: 3 }} />
-                  <span><strong>AST Hybrid RRF Retrieval:</strong> Combines lexical BM25 code tokens with dense vector semantics for sub-20ms pinpoint accuracy.</span>
-                </li>
-                <li className="comparison-item">
-                  <CheckCircle2 size={18} color="#FFFFFF" style={{ flexShrink: 0, marginTop: 3 }} />
-                  <span><strong>Multi-Hop Graph Traversal:</strong> Automatically packages 1/2-hop dependencies and companion tests in one response.</span>
-                </li>
-                <li className="comparison-item">
-                  <CheckCircle2 size={18} color="#FFFFFF" style={{ flexShrink: 0, marginTop: 3 }} />
-                  <span><strong>Read-Only Guardrails:</strong> Context-only operation. Zero file writes, zero shell execution, complete audit trails via Langfuse.</span>
-                </li>
-              </ul>
-            </div>
+            ))}
           </div>
         </div>
       </section>
 
-      {/* ── 3 Architectural Pillars (Bento Grid) ──────────────────────────── */}
-      <section className="section" style={{ background: '#050507' }}>
-        <div className="container">
-          <div className="section-header">
-            <Eyebrow>AST-Level Intelligence</Eyebrow>
-            <h2 className="section-title">
-            Make your AI Agent <span className="highlight-white">Intelligent !</span>
+      {/* ── 4. Flexible Deployment Models (Solo, On-Premises, M5 Cloud) ───── */}
+      <section className="m5-deploy-section">
+        <div className="m5-container">
+          <div style={{ textAlign: 'center', maxWidth: '840px', margin: '0 auto 12px' }}>
+            <span style={{ fontFamily: 'PolySans Mono, monospace', fontSize: '13px', color: '#B92B23', fontWeight: 600, letterSpacing: '-0.01em', textTransform: 'uppercase' }}>
+              DEPLOYMENT MODELS
+            </span>
+            <h2 className="m5-values-title" style={{ marginTop: '12px' }}>
+              Deploy your way. Total control over your codebase.
             </h2>
-            <p className="section-desc">The brain behind Copilot, Cursor, and Claude Code. Three isolated subsystems delivering verified truth.</p>
+            <p className="m5-values-sub" style={{ marginBottom: '0' }}>
+              From offline solo hacking on your laptop to enterprise air-gapped VPCs and fully managed high-availability cloud clusters.
+            </p>
           </div>
 
-          <div className="bento-grid">
-            <div className="bento-card">
+          <div className="m5-deploy-grid">
+            {/* Model 1: Solo Local */}
+            <div className="m5-deploy-card">
               <div>
-                <div className="bento-icon">
-                  <Layers size={22} />
+                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+                  <span className="m5-deploy-tag">01 / SOLO DEVELOPER</span>
+                  <Laptop size={20} color="#B92B23" />
                 </div>
-                <h3 className="bento-title">AST Parsing &amp; Hybrid RRF</h3>
-                <p className="bento-text">
-                  Indexes codebases into syntax-aware AST chunks. Queries execute via Reciprocal Rank Fusion (RRF) across exact BM25 keyword symbols and high-dimensional vector embeddings in Qdrant.
+                <h3 className="m5-deploy-heading">Embedded Local Engine</h3>
+                <div className="m5-deploy-tagline">Solo engineers &amp; offline workflows</div>
+                <p className="m5-deploy-desc">
+                  Run M5 directly on your workstation with an embedded SQLite store and Tree-sitter AST parser. 100% offline with zero cloud credentials.
                 </p>
               </div>
-            </div>
 
-            <div className="bento-card">
               <div>
-                <div className="bento-icon">
-                  <GitBranch size={22} />
-                </div>
-                <h3 className="bento-title">Multi-Hop Dependency Graph</h3>
-                <p className="bento-text">
-                  Maintains a live dependency graph of function calls, class inheritances, and imports. When context is requested, M5 expands up to 2 hops and automatically attaches companion test files.
-                </p>
-              </div>
-            </div>
+                <ul className="m5-deploy-bullets">
+                  <li className="m5-deploy-bullet">
+                    <span>✓</span> Lightweight local CLI &amp; background daemon
+                  </li>
+                  <li className="m5-deploy-bullet">
+                    <span>✓</span> Instant sub-millisecond local vector retrieval
+                  </li>
+                  <li className="m5-deploy-bullet">
+                    <span>✓</span> Zero telemetry — your code never touches the internet
+                  </li>
+                </ul>
 
-            <div className="bento-card">
-              <div>
-                <div className="bento-icon">
-                  <GitPullRequest size={22} />
-                </div>
-                <h3 className="bento-title">Incremental Git PR Indexing</h3>
-                <p className="bento-text">
-                  Automatically indexes changed diffs on every Pull Request instead of re-indexing entire monorepos. Saves over 95% in CI compute time and keeps code context synchronized in real-time.
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* ── 1-Click IDE Setup Hub ─────────────────────────────────────────── */}
-      <section className="section">
-        <div className="container">
-          <div className="section-header">
-            <Eyebrow>Your Code • Your Data • Your Control</Eyebrow>
-            <h2 className="section-title">
-              Zero code leaves your building. <span className="highlight-white">100% intelligence enters your IDE</span>.
-            </h2>
-            <p className="section-desc">Index once in CI/CD. Serve 10,000 developers in milliseconds with universal MCP support.</p>
-          </div>
-
-          <div className="setup-hub-card">
-            <div className="setup-hub-tabs">
-              {Object.keys(configs).map((key) => (
-                <button
-                  key={key}
-                  className={`setup-tab-item ${activeTab === key ? 'active' : ''}`}
-                  onClick={() => setActiveTab(key)}
+                <button 
+                  className="m5-hero-btn-primary" 
+                  style={{ width: '100%', justifyContent: 'center', fontSize: '14px', padding: '10px 16px' }}
+                  onClick={openDemoModal}
                 >
-                  <span>{key === 'cursor' ? 'Cursor' : key === 'vscode' ? 'VS Code / Copilot' : key === 'claude' ? 'Claude Code CLI' : key === 'chatgpt' ? 'ChatGPT Remote MCP' : 'REST API'}</span>
+                  Run Solo CLI
                 </button>
-              ))}
+              </div>
             </div>
 
-            <div className="setup-hub-body">
-              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '16px' }}>
-                <span style={{ color: '#FFFFFF', fontWeight: 500 }}>{configs[activeTab].title}</span>
-                <span className="setup-mcp-badge">MCP Protocol</span>
+            {/* Model 2: On-Premises & VPC */}
+            <div className="m5-deploy-card" style={{ border: '2px solid #000000' }}>
+              <div>
+                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+                  <span className="m5-deploy-tag" style={{ color: '#000000' }}>02 / ON-PREMISES &amp; VPC</span>
+                  <Server size={20} color="#000000" />
+                </div>
+                <h3 className="m5-deploy-heading">Air-Gapped Enterprise</h3>
+                <div className="m5-deploy-tagline">Strict corporate compliance &amp; data sovereignty</div>
+                <p className="m5-deploy-desc">
+                  Self-host M5 within your private AWS, GCP, or Azure VPC or bare-metal Kubernetes. Engineered for air-gapped security and monorepo scale.
+                </p>
               </div>
-              <CodeBlock code={configs[activeTab].code} />
+
+              <div>
+                <ul className="m5-deploy-bullets">
+                  <li className="m5-deploy-bullet">
+                    <span>✓</span> SOC 2, HIPAA &amp; ISO-27001 air-gap compliant
+                  </li>
+                  <li className="m5-deploy-bullet">
+                    <span>✓</span> Connects with internal Qdrant, Redis &amp; Git servers
+                  </li>
+                  <li className="m5-deploy-bullet">
+                    <span>✓</span> Complete audit trails via Langfuse &amp; OpenTelemetry
+                  </li>
+                </ul>
+
+                <button 
+                  className="m5-hero-btn-primary" 
+                  style={{ width: '100%', justifyContent: 'center', fontSize: '14px', padding: '10px 16px', background: '#000000', color: '#FFFFFF' }}
+                  onClick={openDemoModal}
+                >
+                  Deploy On-Premises
+                </button>
+              </div>
+            </div>
+
+            {/* Model 3: M5 Managed Cloud */}
+            <div className="m5-deploy-card">
+              <div>
+                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+                  <span className="m5-deploy-tag">03 / M5 MANAGED CLOUD</span>
+                  <Cloud size={20} color="#B92B23" />
+                </div>
+                <h3 className="m5-deploy-heading">High-Performance SaaS</h3>
+                <div className="m5-deploy-tagline">Zero infrastructure ops &amp; instant setup</div>
+                <p className="m5-deploy-desc">
+                  Production-grade cloud deployment managed 24/7 by M5. Connect GitHub or GitLab in 1 click, get automated AST indexing on every PR, and sub-15ms retrieval worldwide.
+                </p>
+              </div>
+
+              <div>
+                <ul className="m5-deploy-bullets">
+                  <li className="m5-deploy-bullet">
+                    <span>✓</span> Automated PR webhooks with incremental diff indexing
+                  </li>
+                  <li className="m5-deploy-bullet">
+                    <span>✓</span> Multi-tenant isolated namespaces with 99.99% uptime
+                  </li>
+                  <li className="m5-deploy-bullet">
+                    <span>✓</span> Sub-15ms worldwide API with continuous backups
+                  </li>
+                </ul>
+
+                <button 
+                  className="m5-hero-btn-primary" 
+                  style={{ width: '100%', justifyContent: 'center', fontSize: '14px', padding: '10px 16px' }}
+                  onClick={openDemoModal}
+                >
+                  Start Cloud Deployment
+                </button>
+              </div>
             </div>
           </div>
         </div>
       </section>
+
+      {/* ── 5. "Our Values" 4-Card Grid (M5 1:1) ──────────────────────── */}
+      <section className="m5-values-section">
+        <div className="m5-container">
+          <h2 className="m5-values-title">Zero code leaves your building.<br></br> 100% intelligence enters your IDE.</h2>
+          <p className="m5-values-sub">
+            We optimize for context correctness first, token efficiency second, scale always.
+          </p>
+
+          <div className="m5-values-grid">
+            <div className="m5-value-card">
+              <span className="m5-value-num">01 / DETERMINISM</span>
+              <div>
+                <h4 className="m5-value-heading">Deterministic over Probabilistic</h4>
+                <p className="m5-value-desc">
+                  Fuzzy vector searches hallucinate on code syntax. M5 resolves exact AST syntax trees and call hierarchies.
+                </p>
+              </div>
+            </div>
+
+            <div className="m5-value-card">
+              <span className="m5-value-num">02 / INTEGRITY</span>
+              <div>
+                <h4 className="m5-value-heading">Zero File-System Mutation</h4>
+                <p className="m5-value-desc">
+                  Context-only operation. Zero file writes, zero shell execution, and complete isolation from production repositories.
+                </p>
+              </div>
+            </div>
+
+            <div className="m5-value-card">
+              <span className="m5-value-num">03 / VELOCITY</span>
+              <div>
+                <h4 className="m5-value-heading">Milliseconds Matter</h4>
+                <p className="m5-value-desc">
+                  Sub-15ms median retrieval latency ensures autonomous developer agent workflows feel instantaneous and effortless.
+                </p>
+              </div>
+            </div>
+
+            <div className="m5-value-card">
+              <span className="m5-value-num">04 / AUDITABILITY</span>
+              <div>
+                <h4 className="m5-value-heading">Auditable End-to-End</h4>
+                <p className="m5-value-desc">
+                  Every AST chunk served is logged with OpenTelemetry traces and Langfuse observability for complete compliance.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      
     </div>
   );
 }
