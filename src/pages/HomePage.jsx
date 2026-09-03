@@ -220,7 +220,7 @@ export default function HomePage({ setActivePage, openDemoModal }) {
               <div>
                 <ul className="m5-deploy-bullets">
                   <li className="m5-deploy-bullet">
-                    <span>✓</span> SOC 2, HIPAA &amp; ISO-27001 air-gap compliant
+                    <span>✓</span> Secure code transmission .
                   </li>
                   <li className="m5-deploy-bullet">
                     <span>✓</span> Connects with internal Qdrant, Redis &amp; Git servers
