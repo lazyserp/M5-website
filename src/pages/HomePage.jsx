@@ -111,7 +111,6 @@ export default function HomePage({ setActivePage, openDemoModal }) {
         <div className="m5-container">
           <div className="m5-languages-center-header">
             <div className="m5-languages-badge-pill">
-              <Code2 size={14} />
               <span>16+ LANGUAGES SUPPORTED</span>
             </div>
             <h2 className="m5-values-title-white" style={{ marginBottom: '16px' }}>

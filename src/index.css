@@ -3378,7 +3378,7 @@ li code {
   align-items: center;
   gap: 8px;
   background: rgba(185, 43, 35, 0.15);
-  border: 1px solid rgba(185, 43, 35, 0.35);
+  /* border: 1px solid rgba(185, 43, 35, 0.35); */
   color: #FF5A52;
   font-family: 'PolySans Mono', monospace;
   font-size: 13px;
