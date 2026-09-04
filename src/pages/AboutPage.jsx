@@ -121,13 +121,7 @@ export default function AboutPage({ setActivePage, openDemoModal }) {
                 <span>Request Access</span>
                 <ArrowRight size={16} />
               </button>
-              <button
-                className="m5-hero-btn-secondary"
-                style={{ padding: '12px 28px', fontSize: '15px' }}
-                onClick={() => setActivePage('docs')}
-              >
-                <span>Explore Technology</span>
-              </button>
+              
             </div>
           </div>
 
