@@ -1,13 +1,15 @@
 import React, { useState } from 'react';
+import { Link, useLocation } from 'react-router-dom';
 import { Menu, X } from 'lucide-react';
 
-export default function Navbar({ activePage, setActivePage, openDemoModal }) {
+export default function Navbar({ activePage, openDemoModal }) {
   const [mobileOpen, setMobileOpen] = useState(false);
+  const location = useLocation();
 
-  const handleNavClick = (page) => {
-    setActivePage(page);
-    setMobileOpen(false);
-  };
+  const currentPath = location.pathname;
+  const isHome = currentPath === '/' || currentPath === '/overview';
+  const isTry = currentPath === '/try' || currentPath === '/trynow';
+  const isAbout = currentPath === '/about';
 
   const handleCtaClick = () => {
     setMobileOpen(false);
@@ -17,35 +19,46 @@ export default function Navbar({ activePage, setActivePage, openDemoModal }) {
   return (
     <header className="m5-header">
       <div className="m5-header-container">
-        {/* Left: M5 Logo using user's logo.png from public folder */}
-        <div
+        {/* Left: M5 Logo */}
+        <Link
+          to="/overview"
           className="m5-brand-logo"
-          onClick={() => handleNavClick('home')}
-          role="button"
-          tabIndex={0}
+          onClick={() => setMobileOpen(false)}
         >
           <img src="/logo.png" alt="M5 Logo" className="m5-brand-logo-img" />
-        </div>
+        </Link>
 
         {/* Center: Exactly Centered Small Shinkei-Style Navigation Pill */}
         <div className="m5-nav-center-slot">
           <div className="m5-nav-pill-group">
-            <button
-              className={`m5-nav-item ${activePage === 'home' ? 'active' : ''}`}
-              onClick={() => handleNavClick('home')}
+            <Link
+              to="/overview"
+              className={`m5-nav-item ${isHome ? 'active' : ''}`}
+              style={{ textDecoration: 'none', display: 'inline-flex', alignItems: 'center' }}
+              onClick={() => setMobileOpen(false)}
             >
               Overview
-            </button>
-            <button
-              className={`m5-nav-item ${activePage === 'about' ? 'active' : ''}`}
-              onClick={() => handleNavClick('about')}
+            </Link>
+            <Link
+              to="/trynow"
+              className={`m5-nav-item ${isTry ? 'active' : ''}`}
+              style={{ textDecoration: 'none', display: 'inline-flex', alignItems: 'center' }}
+              onClick={() => setMobileOpen(false)}
+            >
+              Try Now
+            </Link>
+            <Link
+              to="/about"
+              className={`m5-nav-item ${isAbout ? 'active' : ''}`}
+              style={{ textDecoration: 'none', display: 'inline-flex', alignItems: 'center' }}
+              onClick={() => setMobileOpen(false)}
             >
               About
-            </button>
+            </Link>
           </div>
         </div>
 
-        {/* Right: Join the Team / Request Access Button */}
+        {/* Right: Request Access Button */}
         <div className="m5-nav-right-slot">
           <button className="m5-cta-pill" onClick={handleCtaClick}>
             <span>Request Access</span>
@@ -65,20 +78,30 @@ export default function Navbar({ activePage, setActivePage, openDemoModal }) {
       {/* Mobile Drawer */}
       {mobileOpen && (
         <div className="m5-mobile-drawer">
-          <button
-            className="m5-nav-item"
-            style={{ textAlign: 'left', fontSize: '16px', padding: '10px 14px' }}
-            onClick={() => handleNavClick('home')}
+          <Link
+            to="/overview"
+            className={`m5-nav-item ${isHome ? 'active' : ''}`}
+            style={{ textAlign: 'left', fontSize: '16px', padding: '10px 14px', textDecoration: 'none', display: 'block' }}
+            onClick={() => setMobileOpen(false)}
           >
             Overview
-          </button>
-          <button
-            className="m5-nav-item"
-            style={{ textAlign: 'left', fontSize: '16px', padding: '10px 14px' }}
-            onClick={() => handleNavClick('about')}
+          </Link>
+          <Link
+            to="/trynow"
+            className={`m5-nav-item ${isTry ? 'active' : ''}`}
+            style={{ textAlign: 'left', fontSize: '16px', padding: '10px 14px', textDecoration: 'none', display: 'block' }}
+            onClick={() => setMobileOpen(false)}
+          >
+            Try Now
+          </Link>
+          <Link
+            to="/about"
+            className={`m5-nav-item ${isAbout ? 'active' : ''}`}
+            style={{ textAlign: 'left', fontSize: '16px', padding: '10px 14px', textDecoration: 'none', display: 'block' }}
+            onClick={() => setMobileOpen(false)}
           >
             About
-          </button>
+          </Link>
           <div style={{ height: '1px', background: 'rgba(255,255,255,0.1)', margin: '8px 0' }} />
           <button className="m5-cta-pill" style={{ width: '100%', height: '40px' }} onClick={handleCtaClick}>
             <span>Request Access</span>
