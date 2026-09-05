@@ -8,6 +8,7 @@ export default function Navbar({ activePage, openDemoModal }) {
 
   const currentPath = location.pathname;
   const isHome = currentPath === '/' || currentPath === '/overview';
+  const isBenchmarks = currentPath === '/benchmarks';
   const isTry = currentPath === '/try' || currentPath === '/trynow';
   const isAbout = currentPath === '/about';
 
@@ -28,7 +29,7 @@ export default function Navbar({ activePage, openDemoModal }) {
           <img src="/logo.png" alt="M5 Logo" className="m5-brand-logo-img" />
         </Link>
 
-        {/* Center: Exactly Centered Small Shinkei-Style Navigation Pill */}
+        {/* Center: Small Navigation Pill */}
         <div className="m5-nav-center-slot">
           <div className="m5-nav-pill-group">
             <Link
@@ -38,6 +39,14 @@ export default function Navbar({ activePage, openDemoModal }) {
               onClick={() => setMobileOpen(false)}
             >
               Overview
+            </Link>
+            <Link
+              to="/benchmarks"
+              className={`m5-nav-item ${isBenchmarks ? 'active' : ''}`}
+              style={{ textDecoration: 'none', display: 'inline-flex', alignItems: 'center' }}
+              onClick={() => setMobileOpen(false)}
+            >
+              Benchmarks
             </Link>
             <Link
               to="/trynow"
@@ -85,6 +94,14 @@ export default function Navbar({ activePage, openDemoModal }) {
             onClick={() => setMobileOpen(false)}
           >
             Overview
+          </Link>
+          <Link
+            to="/benchmarks"
+            className={`m5-nav-item ${isBenchmarks ? 'active' : ''}`}
+            style={{ textAlign: 'left', fontSize: '16px', padding: '10px 14px', textDecoration: 'none', display: 'block' }}
+            onClick={() => setMobileOpen(false)}
+          >
+            Benchmarks
           </Link>
           <Link
             to="/trynow"

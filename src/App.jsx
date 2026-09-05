@@ -6,6 +6,7 @@ import HomePage from './pages/HomePage';
 import DocsPage from './pages/DocsPage';
 import AboutPage from './pages/AboutPage';
 import TryPage from './pages/TryPage';
+import BenchmarkPage from './pages/BenchmarkPage';
 import RequestDemoModal from './components/RequestDemoModal';
 
 function ScrollToTop() {
@@ -30,6 +31,8 @@ function MainLayout() {
       navigate('/trynow');
     } else if (page === 'about') {
       navigate('/about');
+    } else if (page === 'benchmarks' || page === 'bench') {
+      navigate('/benchmarks');
     } else if (page === 'docs') {
       navigate('/docs');
     } else {
@@ -41,6 +44,7 @@ function MainLayout() {
     const p = location.pathname;
     if (p === '/try' || p === '/trynow') return 'try';
     if (p === '/about') return 'about';
+    if (p === '/benchmarks') return 'benchmarks';
     if (p === '/docs') return 'docs';
     return 'home';
   };
@@ -55,6 +59,7 @@ function MainLayout() {
         <Routes>
           <Route path="/" element={<HomePage setActivePage={setActivePage} openDemoModal={openDemoModal} />} />
           <Route path="/overview" element={<HomePage setActivePage={setActivePage} openDemoModal={openDemoModal} />} />
+          <Route path="/benchmarks" element={<BenchmarkPage setActivePage={setActivePage} openDemoModal={openDemoModal} />} />
           <Route path="/try" element={<TryPage setActivePage={setActivePage} openDemoModal={openDemoModal} />} />
           <Route path="/trynow" element={<TryPage setActivePage={setActivePage} openDemoModal={openDemoModal} />} />
           <Route path="/about" element={<AboutPage setActivePage={setActivePage} openDemoModal={openDemoModal} />} />

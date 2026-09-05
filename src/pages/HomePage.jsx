@@ -1,16 +1,14 @@
 import React, { useState } from 'react';
-import { ArrowRight, CheckCircle2, XCircle, Terminal, Shield, Cpu, Layers, GitBranch, GitPullRequest, Check, Server, Laptop, Cloud, Code2 } from 'lucide-react';
+import { ArrowRight, CheckCircle2, XCircle, Terminal, Shield, Cpu, Layers, GitBranch, GitPullRequest, Check, Server, Laptop, Cloud, Code2, BarChart2 } from 'lucide-react';
 import CodeBlock from '../components/CodeBlock';
 
 export default function HomePage({ setActivePage, openDemoModal }) {
   const [activeTab, setActiveTab] = useState('cursor');
 
-
   return (
     <div className="m5-page-root">
       {/* ── 1. Hero Section (Deep Burgundy / Crimson Grain Radial) ─────────── */}
       <section className="m5-about-hero">
-
         <div className="m5-hero-inner">
           <h1 className="m5-hero-title">
             Save your AI token cost
@@ -18,17 +16,39 @@ export default function HomePage({ setActivePage, openDemoModal }) {
 
           <div className="m5-hero-subtitle">
             <p>
-              
               M5 supplies the context. Your AI produces the truth.
             </p>
-
           </div>
 
+          {/* Hero Action Buttons */}
+          <div className="m5-hero-actions" style={{ marginTop: '16px', display: 'flex', gap: '14px', justifyContent: 'center', flexWrap: 'wrap' }}>
+            <button
+              className="m5-hero-btn-white"
+              onClick={() => setActivePage('try')}
+            >
+              <span>Try M5 Free</span>
+              <ArrowRight size={16} />
+            </button>
 
+            <button
+              className="m5-hero-btn-glass"
+              onClick={() => setActivePage('benchmarks')}
+            >
+              <span>Explore Benchmarks</span>
+              <BarChart2 size={16} />
+            </button>
+
+            <button
+              className="m5-hero-btn-glass"
+              onClick={openDemoModal}
+            >
+              <span>Request Access</span>
+            </button>
+          </div>
         </div>
       </section>
 
-      {/* ── 3. 3-Column Feature Cards (M5 1:1) ─────────────────────────── */}
+      {/* ── 2. 6-Column Feature Cards ─────────────────────────────────────── */}
       <section className="m5-features-section">
         <div className="m5-container">
           <h2 className="m5-features-title">
@@ -98,15 +118,14 @@ export default function HomePage({ setActivePage, openDemoModal }) {
                 <span style={{ fontFamily: 'PolySans Mono, monospace', fontSize: '13px', color: '#B92B23', fontWeight: 600 }}>06</span>
               </div>
               <p className="m5-three-card-desc">
-                Native Model Context Protocol  integrates out of the box with Cursor IDE, Claude Code ,Codex, VS Code, Antigravity and other Agentic IDEs with zero setup friction.
+                Native Model Context Protocol integrates out of the box with Cursor IDE, Claude Code, Codex, VS Code, Antigravity and other Agentic IDEs with zero setup friction.
               </p>
             </div>
           </div>
         </div>
       </section>
 
-
-      {/* ── 3. 16+ Languages Supported (Polyglot Monorepo Support) ──────── */}
+      {/* ── 3. 16+ Languages Supported (Polyglot Monorepo Support) ────────── */}
       <section className="m5-languages-section">
         <div className="m5-container">
           <div className="m5-languages-center-header">
@@ -220,7 +239,7 @@ export default function HomePage({ setActivePage, openDemoModal }) {
               <div>
                 <ul className="m5-deploy-bullets">
                   <li className="m5-deploy-bullet">
-                    <span>✓</span> Secure code transmission .
+                    <span>✓</span> Secure code transmission.
                   </li>
                   <li className="m5-deploy-bullet">
                     <span>✓</span> Connects with internal Qdrant, Redis &amp; Git servers
@@ -280,7 +299,7 @@ export default function HomePage({ setActivePage, openDemoModal }) {
         </div>
       </section>
 
-      {/* ── 5. "Our Values" 4-Card Grid (M5 1:1) ──────────────────────── */}
+      {/* ── 5. "Our Values" 4-Card Grid ──────────────────────────────────── */}
       <section className="m5-values-section">
         <div className="m5-container">
           <h2 className="m5-values-title">Zero code leaves your building.<br></br> 100% intelligence enters your IDE.</h2>
@@ -331,7 +350,6 @@ export default function HomePage({ setActivePage, openDemoModal }) {
           </div>
         </div>
       </section>
-      
     </div>
   );
 }
