@@ -35,7 +35,7 @@ export default function HomePage({ setActivePage, openDemoModal }) {
               onClick={() => setActivePage('benchmarks')}
             >
               <span>Explore Benchmarks</span>
-              <BarChart2 size={16} />
+              
             </button>
 
             <button

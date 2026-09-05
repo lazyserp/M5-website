@@ -1,0 +1,622 @@
+/* ── Benchmark Page External Stylesheet ─────────────────────────────── */
+
+/* ── 1. Hero Section ─────────────────────────────────────────────────── */
+.benchmark-hero {
+  padding: 80px 24px 60px;
+}
+
+.benchmark-hero-badge {
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  color: #FFFFFF;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 16px;
+  margin-bottom: 8px;
+}
+
+.benchmark-hero-actions {
+  margin-top: 16px;
+  display: flex;
+  gap: 14px;
+  justify-content: center;
+}
+
+/* ── 2. Top 3 Headline Summary Cards ─────────────────────────────────── */
+.benchmark-summary-section {
+  background: #FFFFFF;
+  padding: 60px 0 20px;
+}
+
+.benchmark-summary-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 24px;
+  margin-top: -100px;
+  position: relative;
+  z-index: 3;
+}
+
+.benchmark-summary-card {
+  background: #FFFFFF;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  border-radius: 14px;
+  padding: 32px 28px;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.06);
+}
+
+.benchmark-summary-card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 12px;
+}
+
+.benchmark-card-tag {
+  font-family: 'PolySans', sans-serif;
+  font-size: 12px;
+  color: #B92B23;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+}
+
+.benchmark-summary-card-metric {
+  font-family: 'PolySans Mono', monospace;
+  font-size: 44px;
+  font-weight: 600;
+  color: #000000;
+  line-height: 1;
+  margin-bottom: 10px;
+}
+
+.benchmark-card-desc {
+  font-family: 'PolySans', sans-serif;
+  font-size: 14px;
+  color: #666666;
+  line-height: 1.55;
+  margin: 0;
+  font-weight: 400;
+}
+
+/* ── 3. Visual Comparison Chart: Token Consumption ───────────────────── */
+.benchmark-graph-section {
+  background: #FFFFFF;
+  padding: 60px 0 40px;
+}
+
+.benchmark-section-header {
+  max-width: 840px;
+  margin: 0 auto 40px;
+  text-align: center;
+}
+
+.benchmark-section-badge {
+  font-family: 'PolySans', sans-serif;
+  font-size: 12px;
+  color: #B92B23;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.benchmark-section-badge-light {
+  font-family: 'PolySans', sans-serif;
+  font-size: 12px;
+  color: #FF6B64;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.benchmark-section-sub {
+  margin: 0 auto;
+  color: #666666;
+  font-weight: 400;
+}
+
+.benchmark-graph-container {
+  background: #FFFFFF;
+  border-top: 1px solid #E5E7EB;
+  border-bottom: 1px solid #E5E7EB;
+  padding: 36px 0;
+  max-width: 960px;
+  margin: 0 auto;
+}
+
+.benchmark-graph-legend {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 14px;
+  margin-bottom: 28px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid #F3F4F6;
+}
+
+.benchmark-legend-title-tag {
+  font-family: 'PolySans', sans-serif;
+  font-size: 11px;
+  color: #888888;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  font-weight: 400;
+}
+
+.benchmark-legend-title {
+  font-size: 14px;
+  font-weight: 500;
+  color: #111111;
+  margin-top: 2px;
+}
+
+.benchmark-legend-swatches {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.benchmark-legend-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 12px;
+  font-weight: 400;
+  font-family: 'PolySans', sans-serif;
+}
+
+.benchmark-legend-swatch-bar {
+  width: 16px;
+  height: 3px;
+  border-radius: 1px;
+}
+
+.benchmark-svg-wrapper {
+  width: 100%;
+  overflow-x: auto;
+  padding: 10px 0 16px;
+}
+
+.benchmark-svg-canvas {
+  width: 100%;
+  min-width: 720px;
+  height: auto;
+  display: block;
+  overflow: visible;
+}
+
+.benchmark-editorial-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 20px;
+  margin-top: 24px;
+  border-top: 1px solid #F3F4F6;
+  padding-top: 24px;
+}
+
+.benchmark-editorial-card {
+  background: #F6F6F6;
+  border: none;
+  border-radius: 4px;
+  padding: 24px 20px;
+}
+
+.benchmark-editorial-card-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+
+.benchmark-editorial-card-title {
+  font-weight: 450;
+  font-size: 13px;
+  color: #111111;
+}
+
+.benchmark-editorial-card-title-red {
+  font-weight: 500;
+  font-size: 13px;
+  color: #B92B23;
+}
+
+.benchmark-editorial-metric {
+  font-family: 'PolySans Mono', monospace;
+  font-size: 16px;
+  font-weight: 600;
+  color: #000000;
+  margin-bottom: 8px;
+}
+
+.benchmark-editorial-metric-tag {
+  font-size: 11px;
+  font-weight: 400;
+}
+
+.benchmark-editorial-desc {
+  font-size: 13px;
+  color: #666666;
+  line-height: 1.55;
+  margin: 0;
+  font-weight: 400;
+}
+
+.benchmark-takeaway-box {
+  margin-top: 20px;
+  padding: 16px 20px;
+  background: #F6F6F6;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.benchmark-takeaway-text {
+  margin: 0;
+  font-size: 13px;
+  color: #444444;
+  line-height: 1.55;
+  font-weight: 400;
+}
+
+/* ── 4. Visual Speed / Latency Meter ─────────────────────────────────── */
+.benchmark-speed-section {
+  background: #FFFFFF;
+  padding: 40px 0 60px;
+}
+
+.benchmark-speed-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 20px;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.benchmark-speed-card {
+  background: #F6F6F6;
+  border: none;
+  border-radius: 4px;
+  padding: 28px 24px;
+}
+
+.benchmark-speed-card-title {
+  font-family: 'PolySans', sans-serif;
+  font-size: 13px;
+  color: #777777;
+  font-weight: 400;
+  margin-bottom: 8px;
+}
+
+.benchmark-speed-card-title-red {
+  font-family: 'PolySans', sans-serif;
+  font-size: 13px;
+  color: #B92B23;
+  font-weight: 500;
+  margin-bottom: 8px;
+}
+
+.benchmark-speed-metric {
+  font-family: 'PolySans Mono', monospace;
+  font-size: 32px;
+  font-weight: 600;
+  color: #000000;
+  margin-bottom: 8px;
+}
+
+.benchmark-speed-desc {
+  font-size: 13px;
+  color: #666666;
+  line-height: 1.55;
+  margin: 0;
+  font-weight: 400;
+}
+
+/* ── 5. Interactive ROI & Cost Savings Calculator ─────────────────────── */
+.benchmark-calc-section {
+  background: #0B0B0C;
+  color: #FFFFFF;
+  padding: 80px 0;
+}
+
+.benchmark-calc-header {
+  max-width: 840px;
+  margin: 0 auto 48px;
+  text-align: center;
+}
+
+.benchmark-calc-title {
+  margin-top: 12px;
+  margin-bottom: 14px;
+}
+
+.benchmark-calc-subtitle {
+  font-family: 'PolySans', sans-serif;
+  color: rgba(255, 255, 255, 0.65);
+  font-size: 16px;
+  margin: 0 auto;
+  max-width: 640px;
+  line-height: 1.55;
+  font-weight: 400;
+}
+
+.benchmark-preset-pills {
+  display: inline-flex;
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 9999px;
+  padding: 4px;
+  margin-top: 28px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  flex-wrap: wrap;
+  gap: 4px;
+}
+
+.benchmark-preset-pill-btn {
+  border: none;
+  padding: 7px 20px;
+  border-radius: 9999px;
+  font-family: 'PolySans', sans-serif;
+  font-size: 13px;
+  font-weight: 400;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.benchmark-preset-pill-btn.active {
+  background: #B92B23;
+  color: #FFFFFF;
+}
+
+.benchmark-preset-pill-btn.inactive {
+  background: transparent;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.benchmark-model-tier-row {
+  margin-top: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.benchmark-model-tier-label {
+  font-size: 11px;
+  color: rgba(255, 255, 255, 0.45);
+  font-family: 'PolySans', sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  font-weight: 400;
+}
+
+.benchmark-model-tier-pills {
+  display: inline-flex;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 8px;
+  padding: 2px;
+  border: 1px solid rgba(255, 255, 255, 0.09);
+}
+
+.benchmark-model-tier-btn {
+  border: none;
+  padding: 5px 14px;
+  border-radius: 6px;
+  font-family: 'PolySans', sans-serif;
+  font-size: 11.5px;
+  font-weight: 400;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.benchmark-model-tier-btn.active {
+  background: rgba(255, 255, 255, 0.15);
+  color: #38BDF8;
+}
+
+.benchmark-model-tier-btn.inactive {
+  background: transparent;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.benchmark-calc-box {
+  max-width: 860px;
+  margin: 0 auto;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 16px;
+  padding: 36px 32px;
+}
+
+.benchmark-calc-metrics-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 24px;
+  text-align: center;
+  margin-bottom: 32px;
+}
+
+.benchmark-calc-metric-header {
+  font-size: 11px;
+  color: rgba(255, 255, 255, 0.45);
+  font-family: 'PolySans', sans-serif;
+  margin-bottom: 8px;
+  font-weight: 400;
+  letter-spacing: 0.06em;
+}
+
+.benchmark-calc-metric-value {
+  font-size: 28px;
+  font-weight: 500;
+  font-family: 'PolySans Mono', monospace;
+  color: #FFFFFF;
+}
+
+.benchmark-calc-metric-value.cyan {
+  color: #38BDF8;
+}
+
+.benchmark-calc-metric-value.green {
+  font-size: 30px;
+  color: #4ADE80;
+}
+
+.benchmark-calc-metric-desc {
+  font-size: 12px;
+  margin-top: 6px;
+  font-weight: 400;
+  font-family: 'PolySans', sans-serif;
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.benchmark-calc-metric-desc.cyan {
+  color: rgba(56, 189, 248, 0.85);
+}
+
+.benchmark-calc-metric-desc.green {
+  color: rgba(74, 222, 128, 0.85);
+}
+
+.benchmark-calc-footer {
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  padding-top: 28px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  gap: 14px;
+}
+
+.benchmark-calc-btn {
+  padding: 12px 36px;
+  font-size: 14px;
+  margin: 0 auto;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.benchmark-calc-footnote {
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.5);
+  max-width: 560px;
+  font-weight: 400;
+  font-family: 'PolySans', sans-serif;
+}
+
+/* ── 6. Simple 3-Column Visual Comparison ────────────────────────────── */
+.benchmark-approaches-section {
+  background: #FFFFFF;
+  padding: 70px 0;
+}
+
+.benchmark-approaches-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 24px;
+  max-width: 1040px;
+  margin: 0 auto;
+}
+
+.benchmark-approach-card {
+  background: #F6F6F6;
+  border: none;
+  border-radius: 0;
+  padding: 34px 28px;
+}
+
+.benchmark-approach-label {
+  font-family: 'PolySans', sans-serif;
+  font-size: 11.5px;
+  color: #777777;
+  font-weight: 450;
+  margin-bottom: 8px;
+  letter-spacing: 0.04em;
+}
+
+.benchmark-approach-label-red {
+  font-family: 'PolySans', sans-serif;
+  font-size: 11.5px;
+  color: #B92B23;
+  font-weight: 500;
+  margin-bottom: 8px;
+  letter-spacing: 0.04em;
+}
+
+.benchmark-approach-title {
+  font-size: 19px;
+  font-weight: 500;
+  color: #111111;
+  margin: 0 0 10px;
+}
+
+.benchmark-approach-desc {
+  font-size: 13.5px;
+  color: #666666;
+  line-height: 1.55;
+  margin-bottom: 22px;
+  font-weight: 400;
+}
+
+.benchmark-approach-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  font-size: 13px;
+  color: #222222;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.benchmark-approach-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: #222222;
+  font-weight: 400;
+}
+
+.benchmark-approach-item.highlight {
+  color: #111111;
+  font-weight: 450;
+}
+
+.benchmark-bullet-dash {
+  color: #EF4444;
+  font-weight: 600;
+}
+
+.benchmark-bullet-check {
+  color: #B92B23;
+  font-weight: 600;
+}
+
+/* ── 7. Call To Action Banner ────────────────────────────────────────── */
+.benchmark-cta-section {
+  padding: 20px 0 90px;
+  background: #FFFFFF;
+}
+
+.benchmark-cta-actions {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+
+.benchmark-cta-btn-primary {
+  padding: 12px 28px;
+  font-size: 15px;
+}
+
+.benchmark-cta-btn-dark {
+  padding: 12px 28px;
+  font-size: 15px;
+  background: #000000;
+  color: #FFFFFF;
+}
